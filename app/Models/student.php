@@ -13,8 +13,8 @@ class student extends Model
 
     protected $table = "student"; 
     protected $fillable = [
-        'nama', 
-        'alamat', 
+        'name', 
+        'address', 
         'email'
     ];
 

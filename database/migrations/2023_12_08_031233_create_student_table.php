@@ -15,7 +15,7 @@ class CreateStudentTable extends Migration
     {
         Schema::create('student', function (Blueprint $table) {
             $table->id(); 
-            $table->string('nama');
+            $table->string('name');
             $table->string('alamat'); 
             $table->string('email')->unique();
             $table->softDeletes();

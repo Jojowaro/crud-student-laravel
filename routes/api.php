@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('student', [studentController::class, 'index']);
-Route::post('student/store', [studentController::class, 'store']);
-Route::get('student/show/{id}', [studentController::class, 'show']);
-Route::post('student/update/{id}', [studentController::class, 'update']);
+Route::post('student', [studentController::class, 'store']);
+Route::get('student/{id}', [studentController::class, 'show']);
+Route::get('student/update/{id}', [studentController::class, 'edit']);
+Route::put('student/update/{id}', [studentController::class, 'update']);
 Route::get('student/delete/{id}', [studentController::class, 'destroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

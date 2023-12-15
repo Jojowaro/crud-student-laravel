@@ -79,8 +79,8 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `student` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `nama`, `alamat`, `email`, `deleted_at`, `created_at`, `updated_at`) VALUES
+INSERT INTO `student` (`id`, `name`, `address`, `email`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 'Jono', 'Magelang', 'jonogntg12@gmail.com', '2023-12-10 19:40:08', '2023-12-08 03:33:30', '2023-12-10 19:40:08'),
 (2, 'Aciop', 'Malanggan, Rt1 Rw4', 'acopkun@gmailcom', NULL, '2023-12-08 00:04:05', '2023-12-08 01:21:36'),
 (3, 'Putra', 'Perumahan Indah no:17 Jl. Sukacewe', 'Putroyui998@gmail.com', '2023-12-10 19:35:27', '2023-12-08 00:25:19', '2023-12-10 19:35:27'),
