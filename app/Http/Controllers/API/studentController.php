@@ -18,25 +18,12 @@ class StudentController extends Controller
      */
     public function index()
     {
-        // try {
-        //     $data = Student::all();
+        try {
+            $data = Student::all();
 
-        //     return ApiFormatter::createApi(200, 'Success', $data);
-        // } catch (Exception $error) {
-        //     return ApiFormatter::createApi(400, 'Failed');
-        // }
-
-        $students = Student::all();
-        if($students->count() > 0){
-            return response()->json([
-                'status' => 200,
-                'student' => $students
-            ], 200);
-        }else{
-            return response()->json([
-                'status' => 404,
-                'student' => 'No Record Found'
-            ], 404);
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } catch (Exception $error) {
+            return ApiFormatter::createApi(400, 'Failed');
         }
     }
 
@@ -48,24 +35,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // try {
-        //     $request->validate([
-        //         'name' => 'required',
-        //         'address' => 'required',
-        //         'email' => 'required|email',
-        //     ]);
-
-        //     $student = Student::create([
-        //         'name' => $request->name,
-        //         'address' => $request->address,
-        //         'email' => $request->email
-        //     ]);
-
-        //     return ApiFormatter::createApi(200, 'Success', $student);
-        // } catch (Exception $error) {
-        //     return ApiFormatter::createApi(400, 'Failed');
-        // }
-
         $validator = Validator::make($request-> all(),[
             'name' => 'required',
             'address' => 'required',
@@ -89,7 +58,7 @@ class StudentController extends Controller
                     'status' => 200,
                     'students' => 'Students create successfully'
                 ], 200);
-            }else{
+            } else {
                 return response()->json([
                     'status' => 500,
                     'message' => 'Something went wrong'
@@ -106,25 +75,12 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        // try {
-        //     $student = Student::findOrFail($id);
+        try {
+            $student = Student::findOrFail($id);
 
-        //     return ApiFormatter::createApi(200, 'Success', $student);
-        // } catch (Exception $error) {
-        //     return ApiFormatter::createApi(400, 'Failed');
-        // }
-
-        $student = Student::findOrFail($id);
-        if($student){
-            return response()->json([
-                'status' => 200,
-                'students' => $student
-            ], 200);
-        }else{
-            return response()->json([
-                'status' => 404,
-                'message' => 'No student found'
-            ], 404);
+            return ApiFormatter::createApi(200, 'Success', $student);
+        } catch (Exception $error) {
+            return ApiFormatter::createApi(400, 'Failed');
         }
     }
 
@@ -136,19 +92,6 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        // try {
-        //     $student = Student::find($id);
-    
-        //     if ($student) {
-        //         return ApiFormatter::createApi(200, 'Success', $student);
-        //     } else {
-        //         return ApiFormatter::createApi(404, 'Student not found');
-        //     }
-    
-        // } catch (Exception $error) {
-        //     return ApiFormatter::createApi(500, 'Internal Server Error');
-        // }
-
         $student = Student::find($id);
         if($student){
             return response()->json([
@@ -172,31 +115,6 @@ class StudentController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        // try {
-        //     $request->validate([
-        //         'name' => 'required',
-        //         'address' => 'required',
-        //         'email' => 'required',
-        //     ]);
-    
-        //     $student = Student::find($id);
-    
-        //     if ($student) {
-        //         $student->update([
-        //             'name' => $request->name,
-        //             'address' => $request->address,
-        //             'email' => $request->email
-        //         ]);
-    
-        //         return ApiFormatter::createApi(200, 'Success', $student);
-        //     } else {
-        //         return ApiFormatter::createApi(404, 'Student not found');
-        //     }
-    
-        // } catch (Exception $error) {
-        //     return ApiFormatter::createApi(500, 'Internal Server Error');
-        // }
-
         $validator = Validator::make($request-> all(),[
             'name' => 'required',
             'address' => 'required',
@@ -253,3 +171,100 @@ class StudentController extends Controller
         }
     }
 }
+
+
+
+
+
+
+
+
+    // ===== get student index =====
+    // $students = Student::all();
+    // if($students->count() > 0){
+    //     return response()->json([
+    //         'status' => 200,
+    //         'student' => $students
+    //     ], 200);
+    // }else{
+    //     return response()->json([
+    //         'status' => 404,
+    //         'student' => 'No Record Found'
+    //     ], 404);
+    // }
+
+
+    // ===== post student store =====
+    // try {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'address' => 'required',
+    //         'email' => 'required|email',
+    //     ]);
+
+    //     $student = Student::create([
+    //         'name' => $request->name,
+    //         'address' => $request->address,
+    //         'email' => $request->email
+    //     ]);
+
+    //     return ApiFormatter::createApi(200, 'Success', $student);
+    // } catch (Exception $error) {
+    //     return ApiFormatter::createApi(400, 'Failed');
+    // }
+
+
+    // ===== show id student show =====
+    // $student = Student::findOrFail($id);
+    // if($student){
+    //     return response()->json([
+    //         'status' => 200,
+    //         'students' => $student
+    //     ], 200);
+    // }else{
+    //     return response()->json([
+    //         'status' => 404,
+    //         'message' => 'No student found'
+    //     ], 404);
+    // }
+
+
+    // ===== edit id student edit =====
+    // try {
+    //     $student = Student::find($id);
+    
+    //     if ($student) {
+    //         return ApiFormatter::createApi(200, 'Success', $student);
+    //     } else {
+    //         return ApiFormatter::createApi(404, 'Student not found');
+    //     }
+    
+    // } catch (Exception $error) {
+    //     return ApiFormatter::createApi(500, 'Internal Server Error');
+    // }
+
+    // ===== update student update =====
+    // try {
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'address' => 'required',
+    //         'email' => 'required',
+    //     ]);
+    
+    //     $student = Student::find($id);
+    
+    //     if ($student) {
+    //         $student->update([
+    //             'name' => $request->name,
+    //             'address' => $request->address,
+    //             'email' => $request->email
+    //         ]);
+    
+    //         return ApiFormatter::createApi(200, 'Success', $student);
+    //     } else {
+    //         return ApiFormatter::createApi(404, 'Student not found');
+    //     }
+    
+    // } catch (Exception $error) {
+    //     return ApiFormatter::createApi(500, 'Internal Server Error');
+    // }
